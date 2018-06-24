@@ -3,19 +3,9 @@ prefix geof: <http://www.opengis.net/def/function/geosparql/>
 prefix unit: <http://qudt.org/vocab/unit#>
 prefix : <http://skipthedishes.com/ontology-example/>
 
-
-# Get all features within 2km of the Sample Location
-SELECT ?geom ?feature {
-  ?f a :Location ;
-    rdfs:label ?feature ;
-    geo:hasGeometry ?geom .
-  ?geom geof:nearby (:sampleLocation 50 unit:Kilometer) ;
+# Query 1
+# Select Restaurants that has 'bean' as an ingredient in the menu.
+SELECT ?restaurant {
+  ?restaurant schema:hasMenu/schema:hasMenuItem/schema:ingredients :bean.
 }
 
-# # Get all features within 2km of the Sample Location
-# SELECT ?geom ?feature {
-#   ?f a :Location ;
-#     rdfs:label ?feature ;
-#     geo:hasGeometry ?geom .
-#   ?geom geof:nearby (38.896004 -77.054995 2 unit:Kilometer) ;
-# }

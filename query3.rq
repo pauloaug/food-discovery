@@ -5,7 +5,7 @@ prefix : <http://skipthedishes.com/ontology-example/>
 
 
 
-# Query 2
+# Query 3
 # What kind of Cuisines each restaurant serves?
 SELECT ?restaurant ?cuisine{
   ?restaurant schema:servesCuisine ?cuisine.

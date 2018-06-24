@@ -18,7 +18,7 @@ It also has a [built-in](https://www.stardog.com/docs/#_graphql_queries) [GraphQ
 So, we can send a GraphQL request, like:
   stardog graphql mySpatialDb2 "{ Dish { name }}"
 and get as a response:
-`
+```
   {
   "data" : [ {
     "name" : "sushi"
@@ -28,7 +28,7 @@ and get as a response:
     "name" : "ceviche"
   } ]
 }
-`
+```
 
 ## Getting Started
 
@@ -46,11 +46,28 @@ These instructions will get you a copy of the project up and running on your loc
 
 3. In your terminal, run the following CLI commands to get the response of the queries to the database:
 
-  stardog query --reasoning mySpatialDb2 query1.rq
+ 
+
+### Query 1
+Select Restaurants that has 'bean' as an ingredient in the menu.
+
+   stardog query --reasoning mySpatialDb2 query1.rq
+
+```
+SELECT ?restaurant {
+  ?restaurant schema:hasMenu/schema:hasMenuItem/schema:ingredients :bean.
+}```
+
+### Query 2
+What kind of Cuisines each restaurant serves?
 
   stardog query --reasoning mySpatialDb2 query2.rq
 
-  stardog query --reasoning mySpatialDb2 query3.rq
+```
+SELECT ?restaurant ?cuisine{
+  ?restaurant schema:servesCuisine ?cuisine.
+}```
+
 
 ### Prerequisites
 
