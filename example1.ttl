@@ -36,6 +36,7 @@
 # It has rice and salmon as ingredients.
 :sushi :countryOfOrigin :JapaneseCuisine ;
     a :Dish ;
+    a :MenuItem;
     :name 'sushi';
     schema:ingredients :rice , :salmon .
 
@@ -43,6 +44,7 @@
 # It has bean, pig and rice as ingredients.
 :feijoada :countryOfOrigin :BrazilianCuisine ;
     a :Dish ;
+    a :MenuItem;
     :name 'feijoada' ;
     schema:ingredients :bean , :pig , :rice .
 
@@ -50,6 +52,7 @@
 # It has fish and lemon as ingredients.
 :ceviche :countryOfOrigin :PeruvianCuisine ;
     a :Dish ;
+    a :MenuItem;
     :name 'ceviche' ;
     schema:ingredients :fish , :lemon .
 
@@ -63,7 +66,7 @@
 
 # Menu of Restaurant Informal
 :menuInformal a schema:Menu ;
-    schema:hasMenuItem :feijoada.
+    schema:hasMenuItem :feijoada , :sushi.
 
 # Informal Restaurant position is: latitude -23 and longitude -43
 :informalGeo a :Location ;

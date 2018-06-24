@@ -1,0 +1,11 @@
+prefix geo: <http://www.opengis.net/ont/geosparql#>
+prefix geof: <http://www.opengis.net/def/function/geosparql/>
+prefix unit: <http://qudt.org/vocab/unit#>
+prefix : <http://skipthedishes.com/ontology-example/>
+
+# Query 1
+# Select Restaurants that has 'bean' as an ingredient in the menu.
+SELECT ?restaurant {
+  ?restaurant schema:hasMenu/schema:hasMenuItem/schema:ingredients :bean.
+}
+

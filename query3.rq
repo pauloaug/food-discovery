@@ -1,0 +1,33 @@
+prefix geo: <http://www.opengis.net/ont/geosparql#>
+prefix geof: <http://www.opengis.net/def/function/geosparql/>
+prefix unit: <http://qudt.org/vocab/unit#>
+prefix : <http://skipthedishes.com/ontology-example/>
+
+
+
+# Query 2
+# What kind of Cuisines each restaurant serves?
+SELECT ?restaurant ?cuisine{
+  ?restaurant schema:servesCuisine ?cuisine.
+}
+
+
+# # Select Restaurants that has the same item on the menu
+# SELECT ?restaurant ?item {
+#   ?rest1 a schema:Restaurant ;
+#     schema:hasMenu/schema:hasMenuItem ?item .
+#   ?restaurant a schema:Restaurant ;
+#     schema:hasMenu/schema:hasMenuItem ?item .
+
+  
+# }
+
+
+
+# # Get all features within 2km of the Sample Location
+# SELECT ?geom ?feature {
+#   ?f a :Location ;
+#     rdfs:label ?feature ;
+#     geo:hasGeometry ?geom .
+#   ?geom geof:nearby (:sampleLocation 50 unit:Kilometer) ;
+# }
