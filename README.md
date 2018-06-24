@@ -5,7 +5,7 @@ Food Discovery using a Knowledge Base.
 
 This example shows how to use semantic web technologies (OWL ontology and RDF data) to get inferences about restaurants menus and food.
 
-Inspired by this [Uber Engineering Blog] post.(https://eng.uber.com/uber-eats-query-understanding/).
+Inspired by this [Uber Engineering Blog post](https://eng.uber.com/uber-eats-query-understanding/).
 
 ## Getting Started
 
