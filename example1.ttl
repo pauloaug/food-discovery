@@ -1,0 +1,125 @@
+# @base <http://skipthedishes.com/ontology1/> .
+@prefix schema: <http://schema.org/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix : <http://skipthedishes.com/ontology-example/> .
+
+
+## Classes ##
+
+:Restaurant a rdfs:Class .
+
+:Cuisine a rdfs:Class .
+
+:Dish a rdfs:Class .
+
+# Latin American Cuisine is a subclass of Cuisine
+:LatinAmericanCuisine a owl:Class ;
+    rdfs:subClassOf :Cuisine .
+
+# Brazilian Cuisine is a subclass of Cuisine
+:BrazilianCuisine a owl:Class ;
+    rdfs:subClassOf :LatinAmericanCuisine .
+
+# Peruvian Cuisine is a subclass of Cuisine
+:PeruvianCuisine a owl:Class ;
+    rdfs:subClassOf :LatinAmericanCuisine .
+
+# Japanese Cuisine is a subclass of Cuisine
+:JapaneseCuisine a owl:Class ;
+    rdfs:subClassOf :Cuisine .
+
+
+## Individuals ##
+
+# Sushi is a Japanese Cuisine Dish.
+# It has rice and salmon as ingredients.
+:sushi :countryOfOrigin :JapaneseCuisine ;
+    a :Dish ;
+    :name 'sushi';
+    schema:ingredients :rice , :salmon .
+
+# Feijoada is a Brazilian Cuisine Dish.
+# It has bean, pig and rice as ingredients.
+:feijoada :countryOfOrigin :BrazilianCuisine ;
+    a :Dish ;
+    :name 'feijoada' ;
+    schema:ingredients :bean , :pig , :rice .
+
+# Ceviche is a Peruvian Cuisine Dish.
+# It has fish and lemon as ingredients.
+:ceviche :countryOfOrigin :PeruvianCuisine ;
+    a :Dish ;
+    :name 'ceviche' ;
+    schema:ingredients :fish , :lemon .
+
+
+# Informal is a Brazilian Restaurant
+:informal a schema:Restaurant ;
+    a geo:Feature ;
+    geo:hasGeometry :informalGeo ;
+    schema:hasMenu :menuInformal;
+    schema:servesCuisine :BrazilianCuisine .
+
+# Menu of Restaurant Informal
+:menuInformal a schema:Menu ;
+    schema:hasMenuItem :feijoada.
+
+# Informal Restaurant position is: latitude -23 and longitude -43
+:informalGeo a :Location ;
+    rdfs:label "Informal" ;
+    wgs:lat "-23.0"^^xsd:float ;
+    wgs:long "-43.0"^^xsd:float .
+
+
+# La Cevicheria is a Peruvian Restaurant
+:laCevicheria a schema:Restaurant ;
+    a geo:Feature ;
+    schema:hasMenu :menuLaCevicheria ;
+    geo:hasGeometry :laCevicheriaGeo ;
+    schema:servesCuisine :PeruvianCuisine .
+
+# Menu of Restaurant La Cevicheria
+:menuLaCevicheria a schema:Menu ;
+    schema:hasMenuItem :ceviche.
+
+# Informal Restaurant position is: latitude -22 and longitude -42
+:laCevicheriaGeo a :Location ;
+    rdfs:label "Informal" ;
+    wgs:lat "-22.0"^^xsd:float ;
+    wgs:long "-42.0"^^xsd:float .
+
+
+# Best Sushi is a Japanese Restaurant
+:bestSushi a schema:Restaurant ;
+    a geo:Feature ;
+    geo:hasGeometry :bestSushiGeo ;
+    schema:hasMenu :menuBestSushi ;
+    schema:servesCuisine :JapaneseCuisine .
+
+# Menu of Restaurant Best Sushi
+:menuBestSushi a schema:Menu ;
+    schema:hasMenuItem :sushi.
+
+# Best Sushi Restaurant position is: latitude -22 and longitude -42
+:bestSushiGeo a :Location ;
+    rdfs:label "Informal" ;
+    wgs:lat "-23.0"^^xsd:float ;
+    wgs:long "-43.0"^^xsd:float .
+
+
+
+# Sample location to test geo queries
+:sampleLocation a :Location ;
+    rdfs:label "Sample Location" ;
+    wgs:lat "-23.01"^^xsd:float ;
+    wgs:long "-43.01"^^xsd:float .
+
+
+
+
+
+
+
+
+

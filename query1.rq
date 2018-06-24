@@ -1,0 +1,21 @@
+prefix geo: <http://www.opengis.net/ont/geosparql#>
+prefix geof: <http://www.opengis.net/def/function/geosparql/>
+prefix unit: <http://qudt.org/vocab/unit#>
+prefix : <http://skipthedishes.com/ontology-example/>
+
+
+# Get all features within 2km of the Sample Location
+SELECT ?geom ?feature {
+  ?f a :Location ;
+    rdfs:label ?feature ;
+    geo:hasGeometry ?geom .
+  ?geom geof:nearby (:sampleLocation 50 unit:Kilometer) ;
+}
+
+# # Get all features within 2km of the Sample Location
+# SELECT ?geom ?feature {
+#   ?f a :Location ;
+#     rdfs:label ?feature ;
+#     geo:hasGeometry ?geom .
+#   ?geom geof:nearby (38.896004 -77.054995 2 unit:Kilometer) ;
+# }
